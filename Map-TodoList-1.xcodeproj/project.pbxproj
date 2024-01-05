@@ -12,6 +12,7 @@
 		1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* ViewController.swift */; };
 		1FAE43442B46FA3700CB250E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43432B46FA3700CB250E /* Assets.xcassets */; };
 		1FAE43472B46FA3700CB250E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43452B46FA3700CB250E /* LaunchScreen.storyboard */; };
+		1FAE43692B47B7C400CB250E /* EarthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE43682B47B7C400CB250E /* EarthView.swift */; };
 		D252575AF8CCEF11213B6F92 /* Pods_Map_TodoList_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		1FAE43462B46FA3700CB250E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FAE43482B46FA3700CB250E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FAE43502B4705D300CB250E /* WhirlyGlobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhirlyGlobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FAE43682B47B7C400CB250E /* EarthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthView.swift; sourceTree = "<group>"; };
 		A411C8A0B14BC9BDA7463D27 /* Pods-Map-TodoList-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.release.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.release.xcconfig"; sourceTree = "<group>"; };
 		C6F5A71DBB91AC7327C8A7EB /* Pods-Map-TodoList-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.debug.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAE43392B46FA3600CB250E /* Map-TodoList-1 */,
+				1FAE434F2B46FC2000CB250E /* Supports */,
 				1FAE43382B46FA3600CB250E /* Products */,
 				3AAE56426164A720788A2C80 /* Pods */,
 				1FA3A958341EAC0D809C9769 /* Frameworks */,
@@ -71,7 +74,7 @@
 		1FAE43392B46FA3600CB250E /* Map-TodoList-1 */ = {
 			isa = PBXGroup;
 			children = (
-				1FAE434F2B46FC2000CB250E /* Supports */,
+				1FAE43582B478E5400CB250E /* View */,
 				1FAE434E2B46FC1500CB250E /* Controller */,
 				1FAE43432B46FA3700CB250E /* Assets.xcassets */,
 				1FAE43452B46FA3700CB250E /* LaunchScreen.storyboard */,
@@ -95,6 +98,14 @@
 				1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */,
 			);
 			path = Supports;
+			sourceTree = "<group>";
+		};
+		1FAE43582B478E5400CB250E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FAE43682B47B7C400CB250E /* EarthView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		3AAE56426164A720788A2C80 /* Pods */ = {
@@ -221,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */,
+				1FAE43692B47B7C400CB250E /* EarthView.swift in Sources */,
 				1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */,
 				1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */,
 			);
