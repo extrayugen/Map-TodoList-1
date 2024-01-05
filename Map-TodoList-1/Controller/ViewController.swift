@@ -17,8 +17,7 @@ class ViewController: UIViewController {
     func setupGlobeView() {
         globeSceneView = SCNView()
         globeSceneView.scene = SCNScene()
-        globeSceneView.backgroundColor = .black
-        
+
         let globe = SCNSphere(radius: 1.20)
         
         let earthMaterial = SCNMaterial()
@@ -47,12 +46,14 @@ class ViewController: UIViewController {
         globeSceneView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        globeSceneView.scene?.background.contents = UIImage(named: "space") // "space" 이미지 파일을 배경으로 설정
+
     }
     
     func addRotationToEarth(globeNode: SCNNode) {
         let rotation = CABasicAnimation(keyPath: "rotation")
         rotation.toValue = NSValue(scnVector4: SCNVector4(x: 0, y: 1, z: 0, w: Float.pi * 2))
-        rotation.duration = 15 // 30초 동안 한 바퀴 회전
+        rotation.duration = 15
         rotation.repeatCount = Float.greatestFiniteMagnitude // 무한 반복
         globeNode.addAnimation(rotation, forKey: "rotation")
     }

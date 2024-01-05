@@ -31,5 +31,9 @@ class EarthView: SCNView {
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
         scene.rootNode.addChildNode(cameraNode)
+        
+        // 배경 설정
+        scene.background.contents = UIImage(named: "space") // "space" 이미지 파일을 배경으로 설정
+
     }
 }
