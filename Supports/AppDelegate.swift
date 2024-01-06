@@ -11,10 +11,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        window = UIWindow(windowScene: windowScene)
+        let MainviewController = MainViewController() // Your custom view controller
+        window?.rootViewController = MainviewController
+        window?.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle

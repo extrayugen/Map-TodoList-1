@@ -6,6 +6,5 @@ target 'Map-TodoList-1' do
 
   # Pods for Map-TodoList-1
     pod 'SnapKit'
-    pod 'MaterialComponents'
-
+    pod 'Floaty', '~> 4.2.0'
 end

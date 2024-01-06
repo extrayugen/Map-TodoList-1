@@ -13,32 +13,36 @@
 		1F53F6022B48D7890032CD17 /* night_lights_modified.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F72B48D7890032CD17 /* night_lights_modified.png */; };
 		1F53F6032B48D7890032CD17 /* Albedo-diffuse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F82B48D7890032CD17 /* Albedo-diffuse.jpg */; };
 		1F53F6042B48D7890032CD17 /* Bump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F92B48D7890032CD17 /* Bump.jpg */; };
+		1F53F6102B48EC510032CD17 /* Jalnan2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F60F2B48EC510032CD17 /* Jalnan2.otf */; };
+		1F53F6132B48F78A0032CD17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6122B48F78A0032CD17 /* MapViewController.swift */; };
 		1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433A2B46FA3600CB250E /* AppDelegate.swift */; };
 		1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */; };
-		1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* ViewController.swift */; };
+		1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* MainViewController.swift */; };
 		1FAE43442B46FA3700CB250E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43432B46FA3700CB250E /* Assets.xcassets */; };
 		1FAE43472B46FA3700CB250E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43452B46FA3700CB250E /* LaunchScreen.storyboard */; };
-		D252575AF8CCEF11213B6F92 /* Pods_Map_TodoList_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */; };
+		37B84F3DBA8D5DF96C942996 /* Pods_Map_TodoList_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5ED340B6739B5EF12FB31E /* Pods_Map_TodoList_1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_TodoList_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F53F5E72B48D2D40032CD17 /* Globe.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Globe.dae; path = ../Supports/Globe.dae; sourceTree = "<group>"; };
 		1F53F5F52B48D7890032CD17 /* Ocean_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ocean_Mask.png; sourceTree = "<group>"; };
 		1F53F5F62B48D7890032CD17 /* Clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clouds.png; sourceTree = "<group>"; };
 		1F53F5F72B48D7890032CD17 /* night_lights_modified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night_lights_modified.png; sourceTree = "<group>"; };
 		1F53F5F82B48D7890032CD17 /* Albedo-diffuse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Albedo-diffuse.jpg"; sourceTree = "<group>"; };
 		1F53F5F92B48D7890032CD17 /* Bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bump.jpg; sourceTree = "<group>"; };
+		1F53F60F2B48EC510032CD17 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Jalnan2.otf; path = ../../../../../Desktop/Jalnan2/Jalnan2.otf; sourceTree = "<group>"; };
+		1F53F6122B48F78A0032CD17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FAE43372B46FA3600CB250E /* Map-TodoList-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-TodoList-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAE433A2B46FA3600CB250E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1FAE433E2B46FA3600CB250E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FAE433E2B46FA3600CB250E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1FAE43432B46FA3700CB250E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FAE43462B46FA3700CB250E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FAE43482B46FA3700CB250E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FAE43502B4705D300CB250E /* WhirlyGlobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhirlyGlobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A411C8A0B14BC9BDA7463D27 /* Pods-Map-TodoList-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.release.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.release.xcconfig"; sourceTree = "<group>"; };
-		C6F5A71DBB91AC7327C8A7EB /* Pods-Map-TodoList-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.debug.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.debug.xcconfig"; sourceTree = "<group>"; };
+		99454217C7697BFF3449AF0D /* Pods-Map-TodoList-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.debug.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.debug.xcconfig"; sourceTree = "<group>"; };
+		9A5ED340B6739B5EF12FB31E /* Pods_Map_TodoList_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_TodoList_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE690643E814AC179AAA2975 /* Pods-Map-TodoList-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.release.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D252575AF8CCEF11213B6F92 /* Pods_Map_TodoList_1.framework in Frameworks */,
+				37B84F3DBA8D5DF96C942996 /* Pods_Map_TodoList_1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,11 +77,26 @@
 			path = "High res";
 			sourceTree = "<group>";
 		};
+		1F53F60D2B48EC030032CD17 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1F53F60F2B48EC510032CD17 /* Jalnan2.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		1F53F6162B48FD420032CD17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FA3A958341EAC0D809C9769 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				1FAE43502B4705D300CB250E /* WhirlyGlobe.framework */,
-				1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */,
+				9A5ED340B6739B5EF12FB31E /* Pods_Map_TodoList_1.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				1FAE43392B46FA3600CB250E /* Map-TodoList-1 */,
-				1F53F5F32B48D7890032CD17 /* Texture */,
 				1FAE434F2B46FC2000CB250E /* Supports */,
 				1FAE43382B46FA3600CB250E /* Products */,
 				3AAE56426164A720788A2C80 /* Pods */,
@@ -105,6 +123,7 @@
 		1FAE43392B46FA3600CB250E /* Map-TodoList-1 */ = {
 			isa = PBXGroup;
 			children = (
+				1F53F6162B48FD420032CD17 /* Model */,
 				1FAE43582B478E5400CB250E /* View */,
 				1FAE434E2B46FC1500CB250E /* Controller */,
 				1FAE43432B46FA3700CB250E /* Assets.xcassets */,
@@ -118,7 +137,8 @@
 		1FAE434E2B46FC1500CB250E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1FAE433E2B46FA3600CB250E /* ViewController.swift */,
+				1FAE433E2B46FA3600CB250E /* MainViewController.swift */,
+				1F53F6122B48F78A0032CD17 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -126,6 +146,8 @@
 		1FAE434F2B46FC2000CB250E /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				1F53F60D2B48EC030032CD17 /* Font */,
+				1F53F5F32B48D7890032CD17 /* Texture */,
 				1FAE433A2B46FA3600CB250E /* AppDelegate.swift */,
 				1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */,
 			);
@@ -142,8 +164,8 @@
 		3AAE56426164A720788A2C80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C6F5A71DBB91AC7327C8A7EB /* Pods-Map-TodoList-1.debug.xcconfig */,
-				A411C8A0B14BC9BDA7463D27 /* Pods-Map-TodoList-1.release.xcconfig */,
+				99454217C7697BFF3449AF0D /* Pods-Map-TodoList-1.debug.xcconfig */,
+				AE690643E814AC179AAA2975 /* Pods-Map-TodoList-1.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,11 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FAE434B2B46FA3700CB250E /* Build configuration list for PBXNativeTarget "Map-TodoList-1" */;
 			buildPhases = (
-				CDD8C3B3113D0BA6B87721DA /* [CP] Check Pods Manifest.lock */,
+				8F5237942CF1682899C3570D /* [CP] Check Pods Manifest.lock */,
 				1FAE43332B46FA3600CB250E /* Sources */,
 				1FAE43342B46FA3600CB250E /* Frameworks */,
 				1FAE43352B46FA3600CB250E /* Resources */,
-				2F3DF314E9B567734E17E76C /* [CP] Embed Pods Frameworks */,
+				A554C88BAED6AC70419143E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F53F6102B48EC510032CD17 /* Jalnan2.otf in Resources */,
 				1F53F6032B48D7890032CD17 /* Albedo-diffuse.jpg in Resources */,
 				1FAE43472B46FA3700CB250E /* LaunchScreen.storyboard in Resources */,
 				1F53F5E82B48D2D40032CD17 /* Globe.dae in Resources */,
@@ -222,24 +245,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F3DF314E9B567734E17E76C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CDD8C3B3113D0BA6B87721DA /* [CP] Check Pods Manifest.lock */ = {
+		8F5237942CF1682899C3570D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,6 +267,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A554C88BAED6AC70419143E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -268,9 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */,
+				1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */,
 				1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */,
 				1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */,
+				1F53F6132B48F78A0032CD17 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +433,7 @@
 		};
 		1FAE434C2B46FA3700CB250E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6F5A71DBB91AC7327C8A7EB /* Pods-Map-TodoList-1.debug.xcconfig */;
+			baseConfigurationReference = 99454217C7697BFF3449AF0D /* Pods-Map-TodoList-1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,7 +484,7 @@
 		};
 		1FAE434D2B46FA3700CB250E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A411C8A0B14BC9BDA7463D27 /* Pods-Map-TodoList-1.release.xcconfig */;
+			baseConfigurationReference = AE690643E814AC179AAA2975 /* Pods-Map-TodoList-1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
