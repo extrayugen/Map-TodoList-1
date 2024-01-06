@@ -4,7 +4,7 @@ import MapKit
 import SnapKit
 
 
-class MainViewController: UIViewController, UISearchResultsUpdating, MKMapViewDelegate {
+class MainViewController: UIViewController, MKMapViewDelegate {
 
     // MARK: - Properties
     var globeSceneView: SCNView!
@@ -26,7 +26,6 @@ class MainViewController: UIViewController, UISearchResultsUpdating, MKMapViewDe
         setupGlobeView()
         setupAppNameLabel()
         setupExploreButton()
-        setupSearchBar()
 
     }
     
@@ -121,44 +120,6 @@ class MainViewController: UIViewController, UISearchResultsUpdating, MKMapViewDe
             make.height.equalTo(50)
         }
     }
-    
-    func setupSearchBar() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for places"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
-    
-    // MARK: - UISearchResultsUpdating
-    func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-            search(for: searchText)
-        }
-    }
-    
-    // MARK: - Search Handling
-       func search(for query: String) {
-           // Use MKLocalSearch to perform the search.
-           let request = MKLocalSearch.Request()
-           request.naturalLanguageQuery = query
-           
-           let search = MKLocalSearch(request: request)
-           search.start { [weak self] (response, error) in
-               guard let strongSelf = self, let response = response else { return }
-               
-               strongSelf.mapView?.removeAnnotations(strongSelf.mapView?.annotations ?? [])
-               for item in response.mapItems {
-                   let annotation = MKPointAnnotation()
-                   annotation.title = item.name
-                   annotation.coordinate = item.placemark.coordinate
-                   strongSelf.mapView?.addAnnotation(annotation)
-               }
-               if let firstItem = response.mapItems.first {
-                   strongSelf.mapView?.setRegion(MKCoordinateRegion(center: firstItem.placemark.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
-               }
-           }
-       }
     
     // MARK: - Actions
     @objc func exploreButtonTapped() {
