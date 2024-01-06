@@ -4,26 +4,30 @@ import MapKit
 import SnapKit
 
 
-class MainViewController: UIViewController {
-    
+class MainViewController: UIViewController, UISearchResultsUpdating, MKMapViewDelegate {
+
     // MARK: - Properties
     var globeSceneView: SCNView!
     var exploreButton: UIButton!
     var appNameLabel: UILabel!
     var mapView: MKMapView?
-    
-    
-    
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchResults = [MKMapItem]() // 검색 결과를 저장할 배열
+    var resultsTableViewController: UITableViewController! // 검색 결과 목록을 보여줄 테이블 뷰 추가
     
     // MARK: - View Lifecycle
-    override func viewDidLoad() {
+    
+        override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.extendedLayoutIncludesOpaqueBars = true
         edgesForExtendedLayout = [.top, .bottom]
+        
         setupGlobeView()
         setupAppNameLabel()
         setupExploreButton()
-        
+        setupSearchBar()
+
     }
     
     // MARK: - Setup Functions
@@ -118,6 +122,44 @@ class MainViewController: UIViewController {
         }
     }
     
+    func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for places"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    // MARK: - UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            search(for: searchText)
+        }
+    }
+    
+    // MARK: - Search Handling
+       func search(for query: String) {
+           // Use MKLocalSearch to perform the search.
+           let request = MKLocalSearch.Request()
+           request.naturalLanguageQuery = query
+           
+           let search = MKLocalSearch(request: request)
+           search.start { [weak self] (response, error) in
+               guard let strongSelf = self, let response = response else { return }
+               
+               strongSelf.mapView?.removeAnnotations(strongSelf.mapView?.annotations ?? [])
+               for item in response.mapItems {
+                   let annotation = MKPointAnnotation()
+                   annotation.title = item.name
+                   annotation.coordinate = item.placemark.coordinate
+                   strongSelf.mapView?.addAnnotation(annotation)
+               }
+               if let firstItem = response.mapItems.first {
+                   strongSelf.mapView?.setRegion(MKCoordinateRegion(center: firstItem.placemark.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
+               }
+           }
+       }
+    
     // MARK: - Actions
     @objc func exploreButtonTapped() {
         
@@ -161,6 +203,7 @@ class MainViewController: UIViewController {
             // appNameLabel과 exploreButton을 숨깁니다.
             snapshotView.removeFromSuperview() // 스냅샷 뷰를 제거합니다.
             mapViewController.didMove(toParent: self)
+            
             
         }
     }
