@@ -12,8 +12,8 @@ class MainViewController: UIViewController {
     var appNameLabel: UILabel!
     var mapView: MKMapView?
     
-
-
+    
+    
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
         setupGlobeView()
         setupAppNameLabel()
         setupExploreButton()
-
+        
     }
     
     // MARK: - Setup Functions
@@ -120,13 +120,49 @@ class MainViewController: UIViewController {
     
     // MARK: - Actions
     @objc func exploreButtonTapped() {
-        let mapViewController = MapViewController()
-        mapViewController.initialLocation = CLLocationCoordinate2D(latitude: 37.5665, longitude: 126.9780) // Seoul coordinates
-        mapViewController.modalPresentationStyle = .fullScreen
         
-        // Present MapViewController
-        self.present(mapViewController, animated: true, completion: nil)
+        // 레이블과 버튼을 즉시 숨깁니다.
+          self.appNameLabel.isHidden = true
+          self.exploreButton.isHidden = true
+        
+        // MapViewController 전환
+        let mapViewController = MapViewController()
+        
+        // 서울의 위치를 지도 뷰 컨트롤러에 전달합니다.
+        mapViewController.initialLocation = CLLocationCoordinate2D(latitude: 37.5665, longitude: 126.9780)
 
+        self.addChild(mapViewController)
+        self.view.insertSubview(mapViewController.view, aboveSubview: self.globeSceneView)
+        mapViewController.view.alpha = 0 // 초기에는 투명하게 설정합니다.
+
+        
+        // 지구 뷰의 스냅샷을 만들고 화면에 추가합니다.
+        let snapshotView = UIImageView(image: self.globeSceneView.snapshot())
+        snapshotView.frame = self.view.bounds
+        self.view.addSubview(snapshotView)
+        
+        // 지구 뷰를 숨깁니다.
+        self.globeSceneView.isHidden = true
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [], animations: {
+            
+            // 첫 번째 키 프레임: 지구가 확대되면서 페이드아웃합니다.
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5) {
+                snapshotView.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
+                snapshotView.alpha = 0
+            }
+            
+            // 두 번째 키 프레임: 지도 뷰가 나타납니다.
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 1) {
+                mapViewController.view.alpha = 1
+            }
+        }) { _ in
+            
+            // appNameLabel과 exploreButton을 숨깁니다.
+            snapshotView.removeFromSuperview() // 스냅샷 뷰를 제거합니다.
+            mapViewController.didMove(toParent: self)
+            
+        }
     }
 }
 
