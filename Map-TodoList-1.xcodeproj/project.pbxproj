@@ -7,17 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F53F5E82B48D2D40032CD17 /* Globe.dae in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5E72B48D2D40032CD17 /* Globe.dae */; };
+		1F53F6002B48D7890032CD17 /* Ocean_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F52B48D7890032CD17 /* Ocean_Mask.png */; };
+		1F53F6012B48D7890032CD17 /* Clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F62B48D7890032CD17 /* Clouds.png */; };
+		1F53F6022B48D7890032CD17 /* night_lights_modified.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F72B48D7890032CD17 /* night_lights_modified.png */; };
+		1F53F6032B48D7890032CD17 /* Albedo-diffuse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F82B48D7890032CD17 /* Albedo-diffuse.jpg */; };
+		1F53F6042B48D7890032CD17 /* Bump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F92B48D7890032CD17 /* Bump.jpg */; };
 		1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433A2B46FA3600CB250E /* AppDelegate.swift */; };
 		1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */; };
 		1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* ViewController.swift */; };
 		1FAE43442B46FA3700CB250E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43432B46FA3700CB250E /* Assets.xcassets */; };
 		1FAE43472B46FA3700CB250E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE43452B46FA3700CB250E /* LaunchScreen.storyboard */; };
-		1FAE43692B47B7C400CB250E /* EarthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE43682B47B7C400CB250E /* EarthView.swift */; };
 		D252575AF8CCEF11213B6F92 /* Pods_Map_TodoList_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A509732BF86509B39FF01E3 /* Pods_Map_TodoList_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Map_TodoList_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F53F5E72B48D2D40032CD17 /* Globe.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Globe.dae; path = ../Supports/Globe.dae; sourceTree = "<group>"; };
+		1F53F5F52B48D7890032CD17 /* Ocean_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ocean_Mask.png; sourceTree = "<group>"; };
+		1F53F5F62B48D7890032CD17 /* Clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clouds.png; sourceTree = "<group>"; };
+		1F53F5F72B48D7890032CD17 /* night_lights_modified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night_lights_modified.png; sourceTree = "<group>"; };
+		1F53F5F82B48D7890032CD17 /* Albedo-diffuse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Albedo-diffuse.jpg"; sourceTree = "<group>"; };
+		1F53F5F92B48D7890032CD17 /* Bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bump.jpg; sourceTree = "<group>"; };
 		1FAE43372B46FA3600CB250E /* Map-TodoList-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-TodoList-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAE433A2B46FA3600CB250E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,7 +37,6 @@
 		1FAE43462B46FA3700CB250E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FAE43482B46FA3700CB250E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FAE43502B4705D300CB250E /* WhirlyGlobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhirlyGlobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FAE43682B47B7C400CB250E /* EarthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthView.swift; sourceTree = "<group>"; };
 		A411C8A0B14BC9BDA7463D27 /* Pods-Map-TodoList-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.release.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.release.xcconfig"; sourceTree = "<group>"; };
 		C6F5A71DBB91AC7327C8A7EB /* Pods-Map-TodoList-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Map-TodoList-1.debug.xcconfig"; path = "Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +53,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F53F5F32B48D7890032CD17 /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				1F53F5F42B48D7890032CD17 /* High res */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		1F53F5F42B48D7890032CD17 /* High res */ = {
+			isa = PBXGroup;
+			children = (
+				1F53F5F52B48D7890032CD17 /* Ocean_Mask.png */,
+				1F53F5F62B48D7890032CD17 /* Clouds.png */,
+				1F53F5F72B48D7890032CD17 /* night_lights_modified.png */,
+				1F53F5F82B48D7890032CD17 /* Albedo-diffuse.jpg */,
+				1F53F5F92B48D7890032CD17 /* Bump.jpg */,
+			);
+			path = "High res";
+			sourceTree = "<group>";
+		};
 		1FA3A958341EAC0D809C9769 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAE43392B46FA3600CB250E /* Map-TodoList-1 */,
+				1F53F5F32B48D7890032CD17 /* Texture */,
 				1FAE434F2B46FC2000CB250E /* Supports */,
 				1FAE43382B46FA3600CB250E /* Products */,
 				3AAE56426164A720788A2C80 /* Pods */,
@@ -77,6 +108,7 @@
 				1FAE43582B478E5400CB250E /* View */,
 				1FAE434E2B46FC1500CB250E /* Controller */,
 				1FAE43432B46FA3700CB250E /* Assets.xcassets */,
+				1F53F5E72B48D2D40032CD17 /* Globe.dae */,
 				1FAE43452B46FA3700CB250E /* LaunchScreen.storyboard */,
 				1FAE43482B46FA3700CB250E /* Info.plist */,
 			);
@@ -103,7 +135,6 @@
 		1FAE43582B478E5400CB250E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1FAE43682B47B7C400CB250E /* EarthView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -177,7 +208,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F53F6032B48D7890032CD17 /* Albedo-diffuse.jpg in Resources */,
 				1FAE43472B46FA3700CB250E /* LaunchScreen.storyboard in Resources */,
+				1F53F5E82B48D2D40032CD17 /* Globe.dae in Resources */,
+				1F53F6042B48D7890032CD17 /* Bump.jpg in Resources */,
+				1F53F6012B48D7890032CD17 /* Clouds.png in Resources */,
+				1F53F6002B48D7890032CD17 /* Ocean_Mask.png in Resources */,
+				1F53F6022B48D7890032CD17 /* night_lights_modified.png in Resources */,
 				1FAE43442B46FA3700CB250E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FAE433F2B46FA3600CB250E /* ViewController.swift in Sources */,
-				1FAE43692B47B7C400CB250E /* EarthView.swift in Sources */,
 				1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */,
 				1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */,
 			);

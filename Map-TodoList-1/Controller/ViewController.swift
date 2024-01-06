@@ -5,35 +5,20 @@ import SnapKit
 
 
 class ViewController: UIViewController {
-    
     var globeSceneView: SCNView!
-    var mapView: MKMapView!
+    var exploreButton: UIButton!
+    var appNameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGlobeView()
+        setupAppNameLabel()
+        setupExploreButton()
     }
 
     func setupGlobeView() {
         globeSceneView = SCNView()
-        globeSceneView.scene = SCNScene()
-
-        let globe = SCNSphere(radius: 1.20)
-        
-        let earthMaterial = SCNMaterial()
-        earthMaterial.diffuse.contents = UIImage(named: "earth_diffuse_4k")
-        earthMaterial.emission.contents = UIImage(named: "earth_cloud")
-        earthMaterial.specular.contents = UIImage(named: "earth_specular_1k")
-        earthMaterial.normal.contents = UIImage(named: "earth_normal_4k")
-        earthMaterial.transparent.contents = UIImage(named: "clouds_transparent_2k")
-        
-        globe.materials = [earthMaterial]
-        
-        let globeNode = SCNNode(geometry: globe)
-        globeNode.position = SCNVector3(x: 0, y: 0, z: 0)
-        globeSceneView.scene?.rootNode.addChildNode(globeNode)
-        
-        addRotationToEarth(globeNode: globeNode) // 지구에 애니메이션 추가
+        globeSceneView.scene = SCNScene(named: "Globe.dae")
 
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
@@ -46,9 +31,8 @@ class ViewController: UIViewController {
         globeSceneView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        globeSceneView.scene?.background.contents = UIImage(named: "space") // "space" 이미지 파일을 배경으로 설정
-
-    }
+        globeSceneView.scene?.background.contents = UIImage(named: "4k-space-background") // 이미지 파일을 배경으로 설정
+        }
     
     func addRotationToEarth(globeNode: SCNNode) {
         let rotation = CABasicAnimation(keyPath: "rotation")
@@ -57,6 +41,48 @@ class ViewController: UIViewController {
         rotation.repeatCount = Float.greatestFiniteMagnitude // 무한 반복
         globeNode.addAnimation(rotation, forKey: "rotation")
     }
+    
+    func setupAppNameLabel() {
+            appNameLabel = UILabel()
+            appNameLabel.text = "Earth ToDoList" // 여기에 앱 이름 설정
+            appNameLabel.textColor = .white
+            appNameLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+            appNameLabel.textAlignment = .center
+        
+        // 그림자 효과
+        appNameLabel.layer.shadowColor = UIColor.black.cgColor
+        appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 2)
+        appNameLabel.layer.shadowRadius = 5
+        appNameLabel.layer.shadowOpacity = 1
+
+            view.addSubview(appNameLabel)
+            appNameLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(350) // 상단 안전 영역에서부터의 간격
+            }
+        }
+
+        func setupExploreButton() {
+            exploreButton = UIButton(type: .system)
+            exploreButton.setTitle("Explore", for: .normal)
+            exploreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            exploreButton.backgroundColor = UIColor.systemBlue
+            exploreButton.setTitleColor(.white, for: .normal)
+            exploreButton.layer.cornerRadius = 10
+            exploreButton.addTarget(self, action: #selector(exploreButtonTapped), for: .touchUpInside)
+
+            view.addSubview(exploreButton)
+            exploreButton.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100) // 하단 안전 영역에서부터의 간격
+                make.width.equalTo(150)
+                make.height.equalTo(50)
+            }
+        }
+
+        @objc func exploreButtonTapped() {
+            // 여기에 2D 지도로 전환하는 로직 추가
+        }
 
 
 }
