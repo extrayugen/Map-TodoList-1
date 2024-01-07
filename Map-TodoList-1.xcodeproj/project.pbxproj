@@ -15,6 +15,8 @@
 		1F53F6042B48D7890032CD17 /* Bump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F5F92B48D7890032CD17 /* Bump.jpg */; };
 		1F53F6102B48EC510032CD17 /* Jalnan2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F53F60F2B48EC510032CD17 /* Jalnan2.otf */; };
 		1F53F6132B48F78A0032CD17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6122B48F78A0032CD17 /* MapViewController.swift */; };
+		1F53F61F2B4A464A0032CD17 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F61E2B4A464A0032CD17 /* TodoItem.swift */; };
+		1F53F6212B4A46640032CD17 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6202B4A46640032CD17 /* TodoManager.swift */; };
 		1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433A2B46FA3600CB250E /* AppDelegate.swift */; };
 		1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */; };
 		1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* MainViewController.swift */; };
@@ -32,6 +34,8 @@
 		1F53F5F92B48D7890032CD17 /* Bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bump.jpg; sourceTree = "<group>"; };
 		1F53F60F2B48EC510032CD17 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Jalnan2.otf; path = ../../../../../Desktop/Jalnan2/Jalnan2.otf; sourceTree = "<group>"; };
 		1F53F6122B48F78A0032CD17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1F53F61E2B4A464A0032CD17 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoItem.swift; path = "Map-TodoList-1/TodoItem.swift"; sourceTree = SOURCE_ROOT; };
+		1F53F6202B4A46640032CD17 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoManager.swift; path = "Map-TodoList-1/TodoManager.swift"; sourceTree = SOURCE_ROOT; };
 		1FAE43372B46FA3600CB250E /* Map-TodoList-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-TodoList-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAE433A2B46FA3600CB250E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		1F53F6162B48FD420032CD17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F53F61E2B4A464A0032CD17 /* TodoItem.swift */,
+				1F53F6202B4A46640032CD17 /* TodoManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F53F61F2B4A464A0032CD17 /* TodoItem.swift in Sources */,
+				1F53F6212B4A46640032CD17 /* TodoManager.swift in Sources */,
 				1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */,
 				1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */,
 				1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */,
