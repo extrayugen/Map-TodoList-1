@@ -17,6 +17,9 @@
 		1F53F6132B48F78A0032CD17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6122B48F78A0032CD17 /* MapViewController.swift */; };
 		1F53F61F2B4A464A0032CD17 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F61E2B4A464A0032CD17 /* TodoItem.swift */; };
 		1F53F6212B4A46640032CD17 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6202B4A46640032CD17 /* TodoManager.swift */; };
+		1F53F6232B4A48040032CD17 /* TodoEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6222B4A48040032CD17 /* TodoEntryView.swift */; };
+		1F53F6252B4A544B0032CD17 /* UserAddedPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53F6242B4A544B0032CD17 /* UserAddedPin.swift */; };
+		1F8065CF2B4B927C00F23D04 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8065CE2B4B927C00F23D04 /* TodoListViewController.swift */; };
 		1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433A2B46FA3600CB250E /* AppDelegate.swift */; };
 		1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */; };
 		1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE433E2B46FA3600CB250E /* MainViewController.swift */; };
@@ -36,6 +39,9 @@
 		1F53F6122B48F78A0032CD17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1F53F61E2B4A464A0032CD17 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoItem.swift; path = "Map-TodoList-1/TodoItem.swift"; sourceTree = SOURCE_ROOT; };
 		1F53F6202B4A46640032CD17 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoManager.swift; path = "Map-TodoList-1/TodoManager.swift"; sourceTree = SOURCE_ROOT; };
+		1F53F6222B4A48040032CD17 /* TodoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEntryView.swift; sourceTree = "<group>"; };
+		1F53F6242B4A544B0032CD17 /* UserAddedPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAddedPin.swift; path = "Map-TodoList-1/UserAddedPin.swift"; sourceTree = SOURCE_ROOT; };
+		1F8065CE2B4B927C00F23D04 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		1FAE43372B46FA3600CB250E /* Map-TodoList-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map-TodoList-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAE433A2B46FA3600CB250E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FAE433C2B46FA3600CB250E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			children = (
 				1F53F61E2B4A464A0032CD17 /* TodoItem.swift */,
 				1F53F6202B4A46640032CD17 /* TodoManager.swift */,
+				1F53F6242B4A544B0032CD17 /* UserAddedPin.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 			children = (
 				1FAE433E2B46FA3600CB250E /* MainViewController.swift */,
 				1F53F6122B48F78A0032CD17 /* MapViewController.swift */,
+				1F8065CE2B4B927C00F23D04 /* TodoListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 		1FAE43582B478E5400CB250E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F53F6222B4A48040032CD17 /* TodoEntryView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -301,6 +310,9 @@
 				1F53F6212B4A46640032CD17 /* TodoManager.swift in Sources */,
 				1FAE433F2B46FA3600CB250E /* MainViewController.swift in Sources */,
 				1FAE433B2B46FA3600CB250E /* AppDelegate.swift in Sources */,
+				1F53F6232B4A48040032CD17 /* TodoEntryView.swift in Sources */,
+				1F53F6252B4A544B0032CD17 /* UserAddedPin.swift in Sources */,
+				1F8065CF2B4B927C00F23D04 /* TodoListViewController.swift in Sources */,
 				1FAE433D2B46FA3600CB250E /* SceneDelegate.swift in Sources */,
 				1F53F6132B48F78A0032CD17 /* MapViewController.swift in Sources */,
 			);

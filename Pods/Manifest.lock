@@ -1,20 +1,24 @@
 PODS:
   - Floaty (4.2.0)
   - SnapKit (5.6.0)
+  - SwiftEntryKit (2.0.0)
 
 DEPENDENCIES:
   - Floaty (~> 4.2.0)
   - SnapKit
+  - SwiftEntryKit
 
 SPEC REPOS:
   trunk:
     - Floaty
     - SnapKit
+    - SwiftEntryKit
 
 SPEC CHECKSUMS:
   Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
 
-PODFILE CHECKSUM: 078508910c6ecb407915e638f861e7d7a0adf897
+PODFILE CHECKSUM: 39506bca865182be38edc5e673dad9f395dcdbe2
 
 COCOAPODS: 1.14.3

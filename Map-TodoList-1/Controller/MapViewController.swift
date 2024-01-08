@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import SnapKit
+import SwiftEntryKit
 
 class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, MKLocalSearchCompleterDelegate {
 
@@ -17,6 +18,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var searchResultsTableView: UITableView!
+    var userCreatedAnnotation: MKAnnotation?
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,8 +31,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         setupMapView()
         setupSearchBar()
-        
         setupSearchResultsTableView()
+        addLongPressGesture()
         searchCompleter.delegate = self
 
     }
@@ -91,7 +94,43 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             performSearch(searchText: searchText)
         }
     }
-    
+    private func addLongPressGesture() {
+           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
+           mapView.addGestureRecognizer(longPressGesture)
+       }
+
+    // Long press recognizer의 handler 메서드
+    @objc func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        // 이미 추가된 핀이 있는 경우 return
+        if gesture.state != .began || userCreatedAnnotation != nil {
+            return
+        }
+        
+        let locationInView = gesture.location(in: mapView)
+        let coordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
+        
+        // 새로운 핀 추가
+        let userAddedAnnotation = UserAddedPin(coordinate: coordinate, title: "사용자 위치")
+        mapView.addAnnotation(userAddedAnnotation)
+        
+        // 추적을 위해 userCreatedAnnotation에 할당
+        userCreatedAnnotation = userAddedAnnotation
+    }
+
+    private func addPinAtCoordinate(_ coordinate: CLLocationCoordinate2D) {
+        // 기존 핀이 있으면 제거
+        if let existingAnnotation = userCreatedAnnotation {
+            mapView.removeAnnotation(existingAnnotation)
+        }
+
+        // UserAddedPin 인스턴스를 생성하고 좌표를 전달합니다.
+        let annotation = UserAddedPin(coordinate: coordinate)
+        mapView.addAnnotation(annotation)
+
+        // 새로운 핀을 추적
+        userCreatedAnnotation = annotation
+    }
+
     private func performSearch(searchText: String?) {
         guard let searchText = searchText, !searchText.isEmpty else { return }
 
@@ -117,33 +156,78 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         }
     }
     
+    
+    @objc func dismissEntryView() {
+        SwiftEntryKit.dismiss()
+    }
+    
+    // MARK: - MapViewDelegate
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let coordinate = view.annotation?.coordinate else { return }
+        guard let annotation = view.annotation as? UserAddedPin else { return }
         
-        // Todo 입력을 위한 얼럿 컨트롤러 생성
-        let alertController = UIAlertController(title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
+        // UIAlertController 생성
+        let alertController = UIAlertController(title: "새 할 일 추가", message: "할 일의 제목과 설명을 입력하세요.", preferredStyle: .alert)
         
+        // 텍스트 필드 추가
         alertController.addTextField { textField in
             textField.placeholder = "제목"
         }
         alertController.addTextField { textField in
             textField.placeholder = "설명"
         }
+        
+        // 추가 버튼
+        let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
+            guard let title = alertController.textFields?.first?.text,
+                  let description = alertController.textFields?.last?.text else { return }
+            
+            let todoItem = TodoItem(title: title, description: description, coordinate: annotation.coordinate)
+            // TodoManager 또는 관련 데이터 구조에 todoItem 추가
+            // ...
+        }
+        
+        // 취소 버튼
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        // 알림창에 버튼 추가
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        // 알림창 표시
+        self.present(alertController, animated: true)
+    }
 
-        let addAction = UIAlertAction(title: "추가", style: .default) { [weak alertController] _ in
-            guard let title = alertController?.textFields?[0].text,
-                  let description = alertController?.textFields?[1].text else { return }
-
-            let todoItem = TodoItem(title: title, description: description, coordinate: coordinate)
-            TodoManager.shared.addTodo(todoItem)
-            // Todo 목록 업데이트 또는 사용자 인터페이스 반영
+    // MARK: - MapViewDataSource
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
         }
 
-        alertController.addAction(addAction)
-        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        let identifier = "CustomPin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
 
-        present(alertController, animated: true, completion: nil)
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = false
+            annotationView?.animatesWhenAdded = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        if annotation is UserAddedPin {
+            annotationView?.markerTintColor = .systemMint // 사용자가 추가한 핀의 색상
+        } else {
+            annotationView?.markerTintColor = .red // 검색 결과 핀의 색상
+        }
+
+        return annotationView
     }
+
+
+
+
 
     
     // MARK: - UITableViewDataSource

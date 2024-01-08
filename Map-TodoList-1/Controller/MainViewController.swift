@@ -80,7 +80,7 @@ class MainViewController: UIViewController, MKMapViewDelegate {
         appNameLabel = UILabel()
         appNameLabel.text = "Earth ToDoList" // 여기에 앱 이름 설정
         appNameLabel.textColor = .white
-        appNameLabel.font = UIFont.systemFont(ofSize: 80, weight: .bold) // 초기 글자 크기 80
+        appNameLabel.font = UIFont.systemFont(ofSize: 80, weight: .bold)
         appNameLabel.textAlignment = .center
         
         // 그림자 효과
@@ -97,7 +97,7 @@ class MainViewController: UIViewController, MKMapViewDelegate {
         
         // 글자 크기 변경 애니메이션
         UIView.animate(withDuration: 2.5, animations: {
-            self.appNameLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65) // 80에서 30으로 변경 (30/80 = 0.375)
+            self.appNameLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65) 
         })
         
     }
