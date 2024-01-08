@@ -1,4 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework
 ${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
-${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework

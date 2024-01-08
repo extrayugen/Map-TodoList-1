@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4BE405F30BA983B2CBB6B0907BFEBB1"
-               BuildableName = "Pods_Map_TodoList_1.framework"
-               BlueprintName = "Pods-Map-TodoList-1"
+               BlueprintIdentifier = "5E6A4B14CA023C808656D9DC438729B2"
+               BuildableName = "FaveButton.framework"
+               BlueprintName = "FaveButton"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

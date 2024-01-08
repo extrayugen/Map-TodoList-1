@@ -8,33 +8,29 @@
 import UIKit
 import MapKit
 import SnapKit
-import SwiftEntryKit
 
 class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, MKLocalSearchCompleterDelegate {
 
     var mapView: MKMapView!
     var initialLocation: CLLocationCoordinate2D?
+    
     let searchBar = UISearchBar()
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var searchResultsTableView: UITableView!
-    var userCreatedAnnotation: MKAnnotation?
-
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        searchBar.becomeFirstResponder()
-    }
+    var userCreatedAnnotation: MKAnnotation?
+    var todoListViewController: TodoListViewController!
+    var bottomSheetView: UIView!
+    var addingPin: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
         setupSearchBar()
         setupSearchResultsTableView()
         addLongPressGesture()
         searchCompleter.delegate = self
-
     }
     
     func setupMapView() {
@@ -101,36 +97,61 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
 
     // Long press recognizer의 handler 메서드
     @objc func handleLongPress(gesture: UILongPressGestureRecognizer) {
-        // 이미 추가된 핀이 있는 경우 return
-        if gesture.state != .began || userCreatedAnnotation != nil {
+        if gesture.state != .began {
             return
         }
         
         let locationInView = gesture.location(in: mapView)
         let coordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
         
-        // 새로운 핀 추가
-        let userAddedAnnotation = UserAddedPin(coordinate: coordinate, title: "사용자 위치")
-        mapView.addAnnotation(userAddedAnnotation)
-        
-        // 추적을 위해 userCreatedAnnotation에 할당
-        userCreatedAnnotation = userAddedAnnotation
+        if addingPin {
+            addPinAtCoordinate(coordinate)
+        } else {
+            // 사용자가 핀을 추가하는 중임을 표시하기 위해 플래그를 설정합니다.
+            addingPin = true
+            // 핀 추가 창을 표시합니다.
+            showPinInputDialog(coordinate: coordinate)
+        }
     }
 
+    // 핀을 지정된 좌표에 추가하는 메서드
     private func addPinAtCoordinate(_ coordinate: CLLocationCoordinate2D) {
-        // 기존 핀이 있으면 제거
         if let existingAnnotation = userCreatedAnnotation {
             mapView.removeAnnotation(existingAnnotation)
         }
-
-        // UserAddedPin 인스턴스를 생성하고 좌표를 전달합니다.
+        
         let annotation = UserAddedPin(coordinate: coordinate)
+        annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
-
-        // 새로운 핀을 추적
+        
         userCreatedAnnotation = annotation
+        addingPin = false // 핀 추가가 완료되면 플래그를 다시 비활성화합니다.
     }
 
+    // 핀 추가 창을 표시하는 메서드
+    private func showPinInputDialog(coordinate: CLLocationCoordinate2D) {
+        let alertController = UIAlertController(title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "할 일"
+        }
+        let addAction = UIAlertAction(title: "추가", style: .default) { [weak self, unowned alertController] _ in
+            guard let todoContent = alertController.textFields?.first?.text else { return }
+            guard let description = alertController.textFields?.last?.text else { return }
+
+            let newTodo = TodoItem(title: todoContent, description: description)
+            // Todo 목록에 추가하는 로직
+            
+            self?.addPinAtCoordinate(coordinate) // 핀을 추가하고 플래그를 다시 설정합니다.
+        }
+
+        alertController.addAction(addAction)
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel) { _ in
+            self.addingPin = false // 취소 버튼을 누르면 플래그를 다시 설정하여 핀 추가 모드를 비활성화합니다.
+        })
+
+        present(alertController, animated: true)
+    }
+    
     private func performSearch(searchText: String?) {
         guard let searchText = searchText, !searchText.isEmpty else { return }
 
@@ -155,50 +176,49 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             }
         }
     }
+
+    
+    // 할 일 목록을 숨기는 메서드 (예를 들어, 목록의 '완료' 버튼 등에 연결)
+     @objc func hideTodoList() {
+         todoListViewController?.view.isHidden = true
+     }
+
     
     
-    @objc func dismissEntryView() {
-        SwiftEntryKit.dismiss()
-    }
-    
-    // MARK: - MapViewDelegate
+    // MARK: - MKAnnotationView
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation as? UserAddedPin else { return }
-        
-        // UIAlertController 생성
-        let alertController = UIAlertController(title: "새 할 일 추가", message: "할 일의 제목과 설명을 입력하세요.", preferredStyle: .alert)
-        
-        // 텍스트 필드 추가
+        // 선택된 핀이 UserAddedPin 타입인지 확인
+        // 선택된 핀이 UserAddedPin 타입인지 확인
+        guard let userAddedPin = view.annotation as? UserAddedPin else {
+                return
+            }
+                                                            addingPin   let todoListVC = TodoListViewController()
+        let alertController = UIAlertController(title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = "제목"
+            textField.placeholder = "할 일"
         }
-        alertController.addTextField { textField in
-            textField.placeholder = "설명"
-        }
-        
-        // 추가 버튼
-        let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
-            guard let title = alertController.textFields?.first?.text,
-                  let description = alertController.textFields?.last?.text else { return }
+        let addAction = UIAlertAction(title: "추가", style: .default) {
+            [weak alertController] _ in
+            guard let todoContent = alertController?.textFields?.first?.text else { return }
+            guard let description = alertController?.textFields?.last?.text else { return }
+
+            // Todo 목록에 추가하는 로직
+            let newTodo = TodoItem(title: todoContent, description: description)
             
-            let todoItem = TodoItem(title: title, description: description, coordinate: annotation.coordinate)
-            // TodoManager 또는 관련 데이터 구조에 todoItem 추가
-            // ...
+            // 추가된 핀을 표시
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = todoContent
+            mapView.addAnnotation(annotation)
         }
         
-        // 취소 버튼
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         
-        // 알림창에 버튼 추가
         alertController.addAction(addAction)
-        alertController.addAction(cancelAction)
-        
-        // 알림창 표시
-        self.present(alertController, animated: true)
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        present(alertController, animated: true)
     }
 
-    // MARK: - MapViewDataSource
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
