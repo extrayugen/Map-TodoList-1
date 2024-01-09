@@ -130,7 +130,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
 
     // 핀 추가 창을 표시하는 메서드
     private func showPinInputDialog(coordinate: CLLocationCoordinate2D) {
-        let alertController = UIAlertController(title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "할 일"
         }
@@ -138,7 +139,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             guard let todoContent = alertController.textFields?.first?.text else { return }
             guard let description = alertController.textFields?.last?.text else { return }
 
-            let newTodo = TodoItem(title: todoContent, description: description)
+            let newTodo = TodoItem(title: todoContent)
             // Todo 목록에 추가하는 로직
             
             self?.addPinAtCoordinate(coordinate) // 핀을 추가하고 플래그를 다시 설정합니다.
@@ -189,37 +190,67 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // 선택된 핀이 UserAddedPin 타입인지 확인
-        // 선택된 핀이 UserAddedPin 타입인지 확인
         guard let userAddedPin = view.annotation as? UserAddedPin else {
-                return
-            }
-                                                            addingPin   let todoListVC = TodoListViewController()
+            return
+        }
+        
+        // 해당 핀의 할 일 목록을 가져옴
+        let todoItems = userAddedPin.todoItems
+        
+        if todoItems.isEmpty {
+            // 할 일 목록이 비어있으면 할 일을 추가하는 모달 표시
+            showAddTodoModal(for: userAddedPin)
+        } else {
+            // 할 일 목록을 보여주는 화면 표시
+            showTodoList(for: todoItems, with: userAddedPin)
+        }
+    }
+    
+    // 할 일 목록을 보여주는 화면을 표시하는 메서드
+    private func showTodoList(for todoItems: [TodoItem], with userAddedPin: UserAddedPin) {
+        let todoListVC = TodoListViewController()
+        todoListVC.todos = todoItems
+        todoListVC.userAddedPin = userAddedPin
+        let navController = UINavigationController(rootViewController: todoListVC)
+        present(navController, animated: true, completion: nil)
+    }
+
+    // 할 일을 추가하는 모달을 표시하는 메서드
+    private func showAddTodoModal(for userAddedPin: UserAddedPin) {
         let alertController = UIAlertController(title: "할 일 추가", message: "할 일의 내용을 입력하세요", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "할 일"
         }
-        let addAction = UIAlertAction(title: "추가", style: .default) {
-            [weak alertController] _ in
+        alertController.addAction(UIAlertAction(title: "추가", style: .default) { [weak alertController] _ in
             guard let todoContent = alertController?.textFields?.first?.text else { return }
-            guard let description = alertController?.textFields?.last?.text else { return }
-
-            // Todo 목록에 추가하는 로직
-            let newTodo = TodoItem(title: todoContent, description: description)
-            
-            // 추가된 핀을 표시
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = todoContent
-            mapView.addAnnotation(annotation)
-        }
-        
-        
-        alertController.addAction(addAction)
+            let newTodo = TodoItem(title: todoContent)
+            userAddedPin.addTodoItem(newTodo)
+        })
         alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
 
     
+
+
+
+
+
+
+    
+    // MARK: - UITableView Datasource, Delegate
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
+        let searchResult = searchResults[indexPath.row]
+        cell.textLabel?.text = searchResult.title
+        return cell
+    }
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -244,26 +275,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
 
         return annotationView
     }
-
-
-
-
-
-    
-    // MARK: - UITableViewDataSource
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
-        let searchResult = searchResults[indexPath.row]
-        cell.textLabel?.text = searchResult.title
-        return cell
-    }
-
-    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let completion = searchResults[indexPath.row]

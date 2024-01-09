@@ -10,6 +10,5 @@ import MapKit
 
 struct TodoItem {
     var title: String
-    var description: String
     var isFavorited: Bool = false // '좋아요' 상태 추적
 }

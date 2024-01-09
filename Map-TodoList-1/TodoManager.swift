@@ -9,7 +9,6 @@ import Foundation
 
 class TodoManager {
     static let shared = TodoManager()
-    private init() {}
 
     var todos: [TodoItem] = []
 

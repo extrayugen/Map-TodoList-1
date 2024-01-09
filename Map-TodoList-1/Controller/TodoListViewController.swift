@@ -7,7 +7,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     var tableView: UITableView!
     var todos: [TodoItem] = [] // 할 일 목록
     var likedTodos: Set<String> = [] // 좋아요를 누른 할 일 제목을 저장
-    
+    var userAddedPin: UserAddedPin?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
             textField.placeholder = "설명"
         }
         let addAction = UIAlertAction(title: "추가", style: .default) { [unowned self, unowned alertController] _ in
-            guard let title = alertController.textFields?.first?.text,
-                  let description = alertController.textFields?.last?.text else { return }
-            let newItem = TodoItem(title: title, description: description)
+            guard let title = alertController.textFields?.first?.text else { return }
+            let newItem = TodoItem(title: title)
             self.todos.append(newItem)
             self.tableView.reloadData()
         }
@@ -91,7 +91,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         let entryView = TodoEntryView()
         entryView.onAddTodo = { [weak self] text in
             // 할 일 항목 추가 로직
-            let todoItem = TodoItem(title: text, description: text)
+            let todoItem = TodoItem(title: text)
             self?.todos.append(todoItem)
             self?.tableView.reloadData()
         }
