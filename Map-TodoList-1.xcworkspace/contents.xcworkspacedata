@@ -7,4 +7,39 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:Pods"
+      name = "Targets Support Files">
+      <Group
+         location = "group:Pods/Target Support Files/Pods-Map-TodoList-1"
+         name = "Pods-Map-TodoList-1">
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.modulemap">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-acknowledgements.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-acknowledgements.plist">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-dummy.m">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-frameworks.sh">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1-umbrella.h">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.debug.xcconfig">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-Map-TodoList-1/Pods-Map-TodoList-1.release.xcconfig">
+         </FileRef>
+      </Group>
+   </Group>
 </Workspace>

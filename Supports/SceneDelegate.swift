@@ -13,14 +13,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         //Window  초기화
-            guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         window = UIWindow(windowScene: windowScene)
 
-            // ViewController 초기화
-            let mainViewController = MainViewController()
+        // ViewController 초기화
+        let mainViewController = MainViewController()
+        let navigationController = UINavigationController(rootViewController: mainViewController)
 
             // MARK: Window 구성
-        window?.rootViewController = mainViewController
+        window?.rootViewController = navigationController
             // 화면에 띄울 Root 뷰 컨트롤러 지정
 
         window?.backgroundColor = .systemBackground
