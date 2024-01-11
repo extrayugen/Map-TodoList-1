@@ -11,11 +11,9 @@ import MapKit
 
 class TodoItem {
     var title: String
-    var isLiked: Bool // 새로운 isLiked 프로퍼티 추가
 
     init(title: String) {
         self.title = title
-        self.isLiked = false // 기본값은 false로 설정
     }
 }
 

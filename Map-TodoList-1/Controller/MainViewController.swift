@@ -92,7 +92,7 @@ class MainViewController: UIViewController, MKMapViewDelegate {
         view.addSubview(appNameLabel)
         appNameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(350) // 상단 안전 영역에서부터의 간격
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(300) // 상단 안전 영역에서부터의 간격
         }
         
         // 글자 크기 변경 애니메이션
@@ -172,31 +172,31 @@ class MainViewController: UIViewController, MKMapViewDelegate {
 
 
 
-// MARK: - Preview
-
-
-import SwiftUI
-struct PreView: PreviewProvider {
-    static var previews: some View {
-        MainViewController().toPreview()
-    }
-}
-
-#if DEBUG
-extension UIViewController {
-private struct Preview: UIViewControllerRepresentable {
-        let viewController: UIViewController
-
-        func makeUIViewController(context: Context) -> UIViewController {
-            return viewController
-        }
-
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        }
-    }
-
-    func toPreview() -> some View {
-        Preview(viewController: self)
-    }
-}
-#endif
+//// MARK: - Preview
+//
+//
+//import SwiftUI
+//struct PreView: PreviewProvider {
+//    static var previews: some View {
+//        MainViewController().toPreview()
+//    }
+//}
+//
+//#if DEBUG
+//extension UIViewController {
+//private struct Preview: UIViewControllerRepresentable {
+//        let viewController: UIViewController
+//
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//        }
+//    }
+//
+//    func toPreview() -> some View {
+//        Preview(viewController: self)
+//    }
+//}
+//#endif

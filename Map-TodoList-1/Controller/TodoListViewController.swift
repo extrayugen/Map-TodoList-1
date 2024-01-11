@@ -11,25 +11,19 @@ import SnapKit
 import FaveButton
 
 
+
 class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FaveButtonDelegate{
     
     
-    var stackView: UIStackView!
     var todos: [TodoItem] = []
     var tableView: UITableView!
     var location: CLLocationCoordinate2D?
-    var heartButton: FaveButton!
-    var loveButton: FaveButton!
-    var likeButton: FaveButton!
-    var starButton: FaveButton!
-    
+    var faveButton: FaveButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
-        stackView = UIStackView()
         
         // 테이블뷰가 화면 중앙에서 시작하여 아래쪽 끝까지 차지하도록 설정
         tableView.snp.makeConstraints { make in
@@ -56,20 +50,6 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
-    private func createFaveButton(named iconName: String) -> FaveButton {
-        let button = FaveButton(
-            frame: CGRect(x: 200, y: 200, width: 44, height: 44),
-            faveIconNormal: UIImage(named: iconName)
-        )
-        button.delegate = self
-        button.addTarget(self, action: #selector(faveButtonTapped(_:)), for: .touchUpInside) // 액션 추가
-        return button
-    }
-
-    @objc private func faveButtonTapped(_ sender: FaveButton) {
-        sender.isSelected = !sender.isSelected // 버튼의 선택 상태를 토글
-    }
-
     @objc private func addTodoButtonTapped() {
         // UIAlertController를 사용하여 사용자로부터 할 일을 입력받습니다.
         let alertController = UIAlertController(title: "할 일 추가", message: "할 일을 추가하세용!", preferredStyle: .alert)
@@ -92,10 +72,13 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         
+        
         // UIAlertController를 표시합니다.
         present(alertController, animated: true, completion: nil)
     }
+    
 
+    // MARK: - UITableView
     // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
@@ -131,49 +114,76 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             print("FaveButton deselected")
         }
     }
-
     
-    // Header
+    private func createFaveButton(named iconName: String) -> FaveButton {
+        let button = FaveButton(
+            frame: CGRect(x: 0, y: 0, width: 44, height: 44),
+            faveIconNormal: UIImage(named: iconName)
+            
+        )
+
+        return button
+    }
+    
+
+    // MARK: - Header
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         
-        // FaveButton 추가 (4개)
-        let faveButton1 = createFaveButton(named: "heart")
-        let faveButton2 = createFaveButton(named: "like")
-        let faveButton3 = createFaveButton(named: "smile")
-        let faveButton4 = createFaveButton(named: "star")
+        // 버튼 너비와 간격 설정
+        let buttonWidth: CGFloat = 44
+        let buttonSpacing: CGFloat = 50
+        let totalButtonsWidth = buttonWidth * 4
+        let totalSpacing = buttonSpacing * 3 // 세 개의 간격
+        let totalWidth = totalButtonsWidth + totalSpacing
         
-        // StackView를 사용하여 FaveButton들을 가로로 정렬
-        let stackView = UIStackView(arrangedSubviews: [faveButton1, faveButton2, faveButton3, faveButton4])
-        stackView.axis = .horizontal
-        stackView.spacing = 50 // 버튼 간의 간격을 조절 (원하는 값으로 설정)
+        // headerView의 너비 구하기
+        let headerWidth = tableView.bounds.width
+        let startingX = (headerWidth - totalWidth) / 2 // 첫 번째 버튼의 시작점
         
-        headerView.addSubview(stackView)
+        // 각 버튼의 X 좌표 계산
+        let button1X = startingX
+        let button2X = button1X + buttonWidth + buttonSpacing
+        let button3X = button2X + buttonWidth + buttonSpacing
+        let button4X = button3X + buttonWidth + buttonSpacing
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let faveButton1 = FaveButton(
+            frame: CGRect(x: button1X, y: 0, width: 44, height: 44),
+            faveIconNormal: UIImage(named: "heart")
+        )
         
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-        ])
-        
-        stackView.isUserInteractionEnabled = true
-        faveButton1.isUserInteractionEnabled = true
-        faveButton2.isUserInteractionEnabled = true
-        faveButton3.isUserInteractionEnabled = true
-        faveButton4.isUserInteractionEnabled = true
-    
+        let faveButton2 = FaveButton(
+            frame: CGRect(x: button2X, y: 0, width: 44, height: 44),
+            faveIconNormal: UIImage(named: "like")
+        )
+        let faveButton3 = FaveButton(
+            frame: CGRect(x: button3X, y: 0, width: 44, height: 44),
+            faveIconNormal: UIImage(named: "star")
+        )
+        let faveButton4 = FaveButton(
+            frame: CGRect(x: button4X, y: 0, width: 44, height: 44),
+            faveIconNormal: UIImage(named: "smile")
+        )
+
+        faveButton1.selectedColor = .softRed   // 하트
+        faveButton2.selectedColor = .softBlue    // 좋아요
+        faveButton3.selectedColor = .softGold   // 별
+        faveButton4.selectedColor = .softGreen  // 스마일
+
+        headerView.addSubview(faveButton1)
+        headerView.addSubview(faveButton2)
+        headerView.addSubview(faveButton3)
+        headerView.addSubview(faveButton4)
         
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100.0 // 헤더의 높이를 조절 (원하는 값으로 설정)
+        return 80.0 // 헤더의 높이를 조절 (원하는 값으로 설정)
     }
     
 
-
-    // Footer
+// MARK: - Footer
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         
@@ -197,4 +207,11 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 44.0 // 푸터의 높이를 조절 (원하는 값으로 설정)
     }
+}
+
+extension UIColor {
+    static let softRed = UIColor(red: 226/255, green: 38/255, blue: 77/255, alpha: 0.7)
+    static let softGold = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 0.7)
+    static let softBlue = UIColor(red: 0/255, green: 50/255, blue: 180/255, alpha: 0.7)
+    static let softGreen = UIColor(red: 0/255, green: 128/255, blue: 0/255, alpha: 0.7)
 }

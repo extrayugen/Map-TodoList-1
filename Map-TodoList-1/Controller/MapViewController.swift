@@ -156,9 +156,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, MKLocalSearchCompl
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation {
             let selectedLocation = annotation.coordinate
-            showTodoListView(at: selectedLocation)
+            DispatchQueue.global().async {
+                // 오래 걸리는 작업 수행
+                // ...
+                DispatchQueue.main.async {
+                    self.showTodoListView(at: selectedLocation)
+                }
+            }
         }
     }
+
     
     func showTodoListView(at location: CLLocationCoordinate2D) {
         let todoListViewController = TodoListViewController()
@@ -215,7 +222,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, MKLocalSearchCompl
              }
          }
      }
-
-
-
 }
